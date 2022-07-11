@@ -1,0 +1,16 @@
+#!/usr/bin/env node
+
+require('dotenv').config();
+const db = require('../config/db');
+const geocoder = require('../reports/geocoder_google');
+const scoreManager = require('../management/calculateScores');
+
+Promise.all([
+  geocoder.geocodeFacilities(),
+  scoreManager.calculateScores(),
+]).then(
+  () => {
+    console.log("Finished, exiting.");
+    process.exit();
+  }
+);

@@ -1,0 +1,9 @@
+#!/usr/bin/env node
+
+require('dotenv').config();
+const db = require('../config/db');
+const parser = require('../reports/parser');
+
+setTimeout(function(){
+  parser.parseAll(process.env.RAW_HTML_DIRECTORY);
+}, 10000);

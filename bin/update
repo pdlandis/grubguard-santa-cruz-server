@@ -1,0 +1,26 @@
+#!/usr/bin/env node
+
+require('dotenv').config();
+const db = require('../config/db');
+const scraper = require('../reports/scraper');
+const parser = require('../reports/parser');
+const geocoder = require('../reports/geocoder_google');
+const scoreManager = require('../management/calculateScores');
+
+scraper.getHTMLReport().then(
+  (filename) => {
+    parser.parseHTMLreport(filename).then(
+      () => {
+        Promise.all([
+          geocoder.geocodeFacilities(),
+          scoreManager.calculateScores(),
+        ]).then(
+          () => {
+            console.log("Finished, exiting.");
+            process.exit();
+          }
+        );
+      }
+    );
+  }
+);

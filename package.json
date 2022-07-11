@@ -1,0 +1,23 @@
+{
+  "name": "api-server",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "process_all": "node ./bin/process_all",
+    "start": "node ./bin/www",
+    "update": "node ./bin/update",
+    "update_no_scrape": "node ./bin/update_no_scrape"
+  },
+  "dependencies": {
+    "@google/maps": "^0.4.6",
+    "cheerio": "^1.0.0-rc.2",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.6.9",
+    "dotenv": "^6.0.0",
+    "express": "~4.16.0",
+    "http-errors": "~1.6.2",
+    "mongoose": "^5.1.4",
+    "morgan": "~1.9.0",
+    "pug": "2.0.0-beta11"
+  }
+}
